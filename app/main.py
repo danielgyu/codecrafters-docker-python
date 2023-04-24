@@ -13,6 +13,7 @@ def main():
             print(docker_args[0])
         case "echo_stderr":
             print(docker_args[0])
+            print("what???")
         case _:
             raise NotImplementedError()
 
