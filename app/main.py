@@ -8,6 +8,7 @@ def main():
     docker_command = sys.argv[4]
     docker_args = sys.argv[5:]
 
+    print(f"{docker_command=}, {docker_args=}")
     match docker_command:
         case "echo":
             print(" ".join(docker_args))
