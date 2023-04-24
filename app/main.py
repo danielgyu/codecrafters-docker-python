@@ -11,6 +11,8 @@ def main():
     match docker_command:
         case "echo":
             print(" ".join(docker_args))
+        case "echo_stderr":
+            print(" ".join(docker_args))
         case _:
             raise NotImplementedError()
 
