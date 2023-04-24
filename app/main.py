@@ -3,14 +3,17 @@ import sys
 
 
 def main():
-    # You can use print statements as follows for debugging, they'll be visible when running tests.
-    print("Logs from your program will appear here!")
+    _ = sys.argv[3]
 
-    # Uncomment this block to pass the first stage
-    #
-    # command = sys.argv[3]
-    # args = sys.argv[4:]
-    #
+    docker_command = sys.argv[4]
+    docker_args = sys.argv[5:]
+
+    match docker_command:
+        case "echo":
+            print(" ".join(docker_args))
+        case _:
+            raise NotImplementedError()
+
     # completed_process = subprocess.run([command, *args], capture_output=True)
     # print(completed_process.stdout.decode("utf-8"))
 
