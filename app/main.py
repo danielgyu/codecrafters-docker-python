@@ -10,9 +10,9 @@ def main():
 
     match docker_command:
         case "echo":
-            print(" ".join(docker_args))
+            print(docker_args[0])
         case "echo_stderr":
-            print(" ".join(docker_args))
+            print(docker_args[0])
         case _:
             raise NotImplementedError()
 
