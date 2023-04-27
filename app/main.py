@@ -1,26 +1,20 @@
-#import subprocess
+import os
+import subprocess
 import sys
 
 
 def main():
-    _ = sys.argv[3]
+    command = sys.argv[3]
+    args = sys.argv[4:]
 
-    docker_command = sys.argv[4]
-    docker_args = sys.argv[5:]
+    completed_process = subprocess.run(
+        [command, *args],
+        capture_output=True,
+    )
+    os.write(sys.stdout.fileno(), completed_process.stdout)
+    os.write(sys.stderr.fileno(), completed_process.stderr)
 
-    match docker_command:
-        case "echo":
-            print(docker_args[0], file=sys.stdout)
-        case "echo_stderr":
-            print(docker_args[0], file=sys.stderr)
-        case "exit":
-            sys.exit(docker_args[0])
-        case _:
-            raise NotImplementedError()
-
-    # completed_process = subprocess.run([command, *args], capture_output=True)
-    # print(completed_process.stdout.decode("utf-8"))
-
+    exit(completed_process.returncode)
 
 if __name__ == "__main__":
     main()
