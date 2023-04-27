@@ -14,7 +14,7 @@ def main():
         case "echo_stderr":
             print(docker_args[0], file=sys.stderr)
         case "exit":
-            exit(docker_args[0])
+            sys.exit(docker_args[0])
         case _:
             raise NotImplementedError()
 
