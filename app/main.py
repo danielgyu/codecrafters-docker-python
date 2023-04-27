@@ -13,6 +13,8 @@ def main():
             print(docker_args[0], file=sys.stdout)
         case "echo_stderr":
             print(docker_args[0], file=sys.stderr)
+        case "exit":
+            exit(docker_args[0])
         case _:
             raise NotImplementedError()
 
